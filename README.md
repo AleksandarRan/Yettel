@@ -38,13 +38,13 @@ PSEUOD API IMPLEMENTIRAN U NODE,JS:
 Funkcija proveriVinjete(registracija):
     vinjeta = pronadjiVinjetaU(bazi, registracija)
 
-    Ako vinjeta postoji:
+   Ako vinjeta postoji:
         sadašnjiDatum = trenutniDatum()
         datumIsteka = konvertujUDatum(vinjeta.datumIsteka)
 
-        Ako datumIsteka > sadašnjiDatum:
+   Ako datumIsteka > sadašnjiDatum:
             Vrati { "status": "Važeća", "datumIsteka": vinjeta.datumIsteka }
-        Inače:
+    Inače:
             Vrati { "status": "Istekla", "datumIsteka": vinjeta.datumIsteka }
     Inače:
         Vrati { "status": "Nema vinjete" }
@@ -52,17 +52,17 @@ Funkcija proveriVinjete(registracija):
 
 
 Funkcija kupiVinjetu(registracija, tipVinjete, yettelBroj):
-    cena = nadjiCenuZa(tipVinjete)
+  cena = nadjiCenuZa(tipVinjete)
 
-    Ako cena nije pronađena:
-        Vrati { "status": "Neuspešno", "poruka": "Pogrešan tip vinjete" }
+  Ako cena nije pronađena:
+    Vrati { "status": "Neuspešno", "poruka": "Pogrešan tip vinjete" }
 
-    idTransakcije = generišiIDTransakcije()
+  idTransakcije = generišiIDTransakcije()
 
-    datumIsteka = trenutniDatum()
-    Ako tipVinjete je "dnevna":
+  datumIsteka = trenutniDatum()
+  Ako tipVinjete je "dnevna":
         datumIsteka = dodajDane(datumIsteka, 1)
-    Ako tipVinjete je "sedmična":
+  Ako tipVinjete je "sedmična":
         datumIsteka = dodajDane(datumIsteka, 7)
     Ako tipVinjete je "mesečna":
         datumIsteka = dodajMesece(datumIsteka, 1)
@@ -76,13 +76,13 @@ Funkcija kupiVinjetu(registracija, tipVinjete, yettelBroj):
 
 
 Funkcija platiPutarina(registracija, idDeonice, yettelBroj):
-    cena = nadjiCenuZaDeonicu(idDeonice)
+  cena = nadjiCenuZaDeonicu(idDeonice)
 
-    Ako cena nije pronađena:
+  Ako cena nije pronađena:
         Vrati { "status": "Neuspešno", "poruka": "Pogrešan ID deonice" }
 
-    idTransakcije = generišiIDTransakcije()
+  idTransakcije = generišiIDTransakcije()
 
-    sacuvajTransakcijuU(bazi, registracija, idDeonice, yettelBroj, cena, idTransakcije)
+  sacuvajTransakcijuU(bazi, registracija, idDeonice, yettelBroj, cena, idTransakcije)
 
-    Vrati { "status": "Uspešno", "idTransakcije": idTransakcije, "cena": cena }
+  Vrati { "status": "Uspešno", "idTransakcije": idTransakcije, "cena": cena }
