@@ -69,9 +69,8 @@ Funkcija kupiVinjetu(registracija, tipVinjete, yettelBroj):
     Ako tipVinjete je "godišnja":
         datumIsteka = dodajGodine(datumIsteka, 1)
 
-    sacuvajVinjetuU(bazi, registracija, datumIsteka, idTransakcije)
-
-    Vrati { "status": "Uspešno", "idTransakcije": idTransakcije, "cena": cena }
+sacuvajVinjetuU(bazi, registracija, datumIsteka, idTransakcije)
+Vrati { "status": "Uspešno", "idTransakcije": idTransakcije, "cena": cena }
 
 
 
